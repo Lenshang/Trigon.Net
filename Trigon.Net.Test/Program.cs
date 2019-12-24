@@ -30,7 +30,8 @@ namespace Trigon.Net.Test
 
             //m.PlayAllLoop();
             clannad cl = new clannad();
-            cl.Play();
+            //cl.Play();
+            MetalCore();
             Console.ReadLine();
         }
 
@@ -97,18 +98,27 @@ namespace Trigon.Net.Test
             #endregion
 
             #region 钢琴段落
-            //Piece mainPiano = new Piece();
-            //Piece pnPiece = new Piece();
-            //pnPiece[0].Add(piano,PName.C,4,8,60,0.5F);
-            //pnPiece[6].Add(piano, PName.G, 3, 8, 60, 0.5F);
-            //pnPiece[12].Add(piano, PName.Eb, 4, 8, 60, 0.5F);
-            //pnPiece[18].Add(piano, PName.D, 4, 8, 60, 0.5F);
-            ////var pns= GetRandomUnrepeatArray(0, 15, 24);
-            //var a = pnPiece[63];
-            //mainPiano.AddPiece(pnPiece);
-            //mainPiano.AddPiece(pnPiece);
-            //mainPiano.AddPiece(pnPiece);
-            //mainPiano.AddPiece(pnPiece);
+            Piece mainPiano = new Piece();
+            Piece pnPiece = new Piece();
+            pnPiece[0].Add(piano, PName.C, 4, 8, 60, 0.8F);
+            pnPiece[6].Add(piano, PName.F, 4, 8, 60, 0.8F);
+            pnPiece[12].Add(piano, PName.G, 4, 8, 60, 0.8F);
+            pnPiece[18].Add(piano, PName.Bb, 4, 8, 60, 0.8F);
+            pnPiece[24].Add(piano, PName.G, 4, 8, 60, 0.8F);
+            pnPiece[28].Add(piano, PName.F, 4, 8, 60, 0.8F);
+
+            pnPiece[32+ GetRandom(0,5)].Add(piano, PName.C, 4, 8, 60, 0.8F);
+            pnPiece[38 + GetRandom(0, 5)].Add(piano, PName.F, 4, 8, 60, 0.8F);
+            pnPiece[44+ GetRandom(0, 5)].Add(piano, PName.G, 4, 8, 60, 0.8F);
+            pnPiece[50+ GetRandom(0, 5)].Add(piano, PName.Bb, 4, 8, 60, 0.8F);
+            pnPiece[56 + GetRandom(0, 5)].Add(piano, PName.G, 4, 8, 60, 0.8F);
+            pnPiece[60+ GetRandom(0, 4)].Add(piano, PName.F, 4, 8, 60, 0.8F);
+            //var pns= GetRandomUnrepeatArray(0, 15, 24);
+            var a = pnPiece[63];
+            mainPiano.AddPiece(pnPiece);
+            mainPiano.AddPiece(pnPiece);
+            mainPiano.AddPiece(pnPiece);
+            mainPiano.AddPiece(pnPiece);
             #endregion
 
             #region 空段落
@@ -128,7 +138,7 @@ namespace Trigon.Net.Test
             m.AddPiece(Intro);
             m.AddPiece(Break1);
             m.AddPiece(Break2);
-            //m.AddPieceAt(mainPiano, 16);
+            m.AddPieceAt(mainPiano, 16);
             //m.AddPieceAt(mainPiano, 18);
             //m.AddPieceAt(mainPiano, 20);
             //m.AddPieceAt(mainPiano, 22);
@@ -150,6 +160,12 @@ namespace Trigon.Net.Test
             int[] result = new int[count];
             Array.Copy(items, result, count);
             return result;
+        }
+
+        public static int GetRandom(int minValue, int maxValue)
+        {
+            Random rnd = new Random(Guid.NewGuid().ToString().GetHashCode());
+            return rnd.Next(minValue, maxValue);
         }
     }
 }
